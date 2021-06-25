@@ -32,6 +32,9 @@ class InvoicePositionSerializer(ModelSerializer):
     class Meta:
         model = InvoicePosition
         fields = '__all__'
+    total = serializers.SerializerMethodField()
+    def get_total(self, obj):
+        return obj.quantity * obj.amount
 
 class AddressSerializer(ModelSerializer):
     country_name = serializers.SerializerMethodField(source='get_country_name')

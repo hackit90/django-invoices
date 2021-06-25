@@ -5,7 +5,6 @@ from django.db.models import Count
 from .models import Contact, Address, Country, Invoice, InvoicePosition
 # Register your models here.
 
-
 class AddressInline(admin.StackedInline):
     model = Address
     extra = 0
@@ -20,12 +19,10 @@ class ContactAdmin(admin.ModelAdmin):
         count = obj.addresses.count()
         return count
 
-
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = ['key', 'value']
     search_fields = ['value', 'key']
-
 
 class InvoposInline(admin.StackedInline):
     model = InvoicePosition
